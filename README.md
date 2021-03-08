@@ -2,6 +2,11 @@
 
 An interactive plug-and-play debugger and inspector for the Three.js JavaScript 3D library.
 
+- [UMD](#udm)
+- [window](#window)
+
+[![Three.js x3 demonstration](https://raw.githubusercontent.com/gbaptista/three.js-x3/main/images/x3.png)](https://raw.githubusercontent.com/gbaptista/three.js-x3/main/images/x3.png)
+
 ## UDM
 
 ```bash
@@ -36,7 +41,7 @@ renderer.setAnimationLoop(() => {
 });
 ```
 
-## Window
+## window
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/three@0.126.1/build/three.min.js" integrity="sha256-RhW9lLg3YYVh/c3z+9Q8cUD5GFShsH1f7mR0lvCROpk=" crossorigin="anonymous"></script>
