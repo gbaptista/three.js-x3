@@ -1,0 +1,68 @@
+{
+  "name": "three-x3",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gbaptista/three.js-x3",
+  "description": "An interactive plug-and-play debugger and inspector for the Three.js JavaScript 3D library.",
+  "bugs": "https://github.com/gbaptista/three.js-x3/issues",
+  "author": "gbaptista (https://github.com/gbaptista)",
+  "repository": {
+    "url": "https://github.com/gbaptista/three.js-x3",
+    "type": "git"
+  },
+  "files": [
+    "dist/x3.js",
+    "dist/x3-standalone.js"
+  ],
+  "browser": "dist/x3.js",
+  "scripts": {
+    "test": "ava",
+    "lint": "eslint --ext .js demo.js src --fix",
+    "build-prod": "webpack --env NODE_ENV=production BUILD_TARGET=window && webpack --env NODE_ENV=production BUILD_TARGET=umd",
+    "build-dev": "webpack --env NODE_ENV=development BUILD_TARGET=window && webpack --env NODE_ENV=development BUILD_TARGET=umd"
+  },
+  "license": "MIT",
+  "keywords": [
+    "three",
+    "three.js",
+    "debug",
+    "debugger",
+    "inspect",
+    "javascript",
+    "3d",
+    "virtual-reality",
+    "augmented-reality",
+    "webgl",
+    "webgl2",
+    "webaudio",
+    "webxr",
+    "canvas",
+    "svg",
+    "html5"
+  ],
+  "devDependencies": {
+    "@ava/babel": "^1.0.1",
+    "ava": "^3.15.0",
+    "browser-env": "^3.3.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-ava": "^11.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0"
+  },
+  "ava": {
+    "require": [
+      "./test/_browser-env.js"
+    ],
+    "babel": {
+      "compileAsTests": [
+        "src/*",
+        "src/**"
+      ]
+    }
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.7",
+    "stats.js": "^0.17.0"
+  }
+}
