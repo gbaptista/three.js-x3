@@ -4,7 +4,7 @@ An interactive plug-and-play debugger and inspector for the Three.js JavaScript 
 
 ## UDM
 
-```js
+```bash
 yarn add three three-x3
 
 npm install three three-x3
@@ -21,12 +21,19 @@ const x3 = new THREEx3(
 );
 
 x3.add(focusLight, { label: 'Focus Light', open: false });
-
 x3.add(light, { label: 'World Light', open: true });
-
 x3.add(cube, { label: 'Cube' });
-
 x3.add(camera);
+
+renderer.setAnimationLoop(() => {
+  cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+
+  x3.tick();
+
+  x3.fps(() => {
+    renderer.render(scene, camera);
+  });
+});
 ```
 
 ## Window
@@ -47,10 +54,17 @@ const x3 = new THREEx3(
 );
 
 x3.add(focusLight, { label: 'Focus Light', open: false });
-
 x3.add(light, { label: 'World Light', open: true });
-
 x3.add(cube, { label: 'Cube' });
-
 x3.add(camera);
+
+renderer.setAnimationLoop(() => {
+  cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+
+  x3.tick();
+
+  x3.fps(() => {
+    renderer.render(scene, camera);
+  });
+});
 ```
