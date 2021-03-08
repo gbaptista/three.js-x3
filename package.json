@@ -1,6 +1,6 @@
 {
   "name": "three-x3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/gbaptista/three.js-x3",
   "description": "An interactive plug-and-play debugger and inspector for the Three.js JavaScript 3D library.",
   "bugs": "https://github.com/gbaptista/three.js-x3/issues",

@@ -54,6 +54,9 @@ class GUIController {
     switch (object.type) {
       case 'Mesh': strategy = 'addMesh'; break;
 
+      case 'GridHelper': strategy = 'addGenericHelper'; break;
+      case 'AxesHelper': strategy = 'addGenericHelper'; break;
+
       case 'Camera': strategy = 'addCamera'; break;
       case 'CubeCamera': strategy = 'addCamera'; break;
       case 'OrthographicCamera': strategy = 'addCamera'; break;
@@ -89,6 +92,10 @@ class GUIController {
         this[strategy](object, mainFolder, options);
       }
     }
+  }
+
+  static addGenericHelper(object, folder) {
+    folder.add(object, 'visible');
   }
 
   static observeXYZ(object, properties, folder, options) {

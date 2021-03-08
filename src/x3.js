@@ -44,11 +44,16 @@ class THREEx3 {
       size, divisions,
     );
     this.dependencies.scene.add(gridHelper);
+
+    this.add(gridHelper);
   }
 
-  addAxes(size) {
+  addAxes(userSize) {
+    const size = userSize || 5;
     const axesHelper = new this.dependencies.THREE.AxesHelper(size);
     this.dependencies.scene.add(axesHelper);
+
+    this.add(axesHelper);
   }
 
   setupStats() {
