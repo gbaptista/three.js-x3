@@ -47,10 +47,8 @@ renderer.setAnimationLoop(() => {
 <script src="https://cdn.jsdelivr.net/npm/three@0.126.1/build/three.min.js" integrity="sha256-RhW9lLg3YYVh/c3z+9Q8cUD5GFShsH1f7mR0lvCROpk=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.126.1/examples/js/controls/OrbitControls.js" integrity="sha256-+ncCNttOcMopCUa47Sn26Tg06ZC2SnWoi/XikKAhnSY=" crossorigin="anonymous"></script>
-```
 
-```
-<script src="https://cdn.jsdelivr.net/npm/three-x3@0.0.1/dist/x3-standalone.js" integrity="sha256-eQoTGFeFKxlXzqeZMQtej7i2XTSMCDjoH/P4Y40uQAQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/three-x3@0.0.1/dist/x3-standalone.js" integrity="sha256-0ExWK4qAjoTCSQ2V15Z2tcdiRHexpO8qrOUNCGAWMC0=" crossorigin="anonymous"></script>
 ```
 
 ```js
