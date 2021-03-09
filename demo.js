@@ -50,11 +50,15 @@ const x3 = new THREEx3(
     renderer,
     scene,
   },
-  { orbit: true, grid: true, axes: true },
 );
 
-x3.add(focusLight, { label: 'Focus Light', open: false });
-x3.add(light, { label: 'World Light', open: true });
+// x3.add(focusLight, { label: 'Focus Light', open: false });
+// x3.add(light, { label: 'World Light', helper: true, open: true });
+// x3.add(cube, { label: 'Cube', xyz: ['position'] });
+// x3.add(camera);
+
+x3.add(focusLight);
+x3.add(light);
 x3.add(cube, { label: 'Cube' });
 x3.add(camera);
 

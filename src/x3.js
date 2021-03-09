@@ -3,7 +3,7 @@ import Stats from 'stats.js';
 import OrbitController from './controllers/orbit';
 import GUIController from './controllers/gui';
 
-const VERSION = '0.0.1';
+const VERSION = '0.0.3';
 
 class THREEx3 {
   constructor(dependencies, userOptions) {
@@ -13,9 +13,21 @@ class THREEx3 {
 
     this.dependencies = dependencies;
 
+    if (options.orbit === undefined) {
+      options.orbit = true;
+    }
+
+    if (options.grid === undefined) {
+      options.grid = { visible: true };
+    }
+
+    if (options.axes === undefined) {
+      options.axes = { visible: true };
+    }
+
     if (options.orbit) this.addOrbit();
-    if (options.grid) this.addGrid();
-    if (options.axes) this.addAxes();
+    if (options.grid) this.addGrid(undefined, undefined, options.grid);
+    if (options.axes) this.addAxes(undefined, options.axes);
   }
 
   setupGUI() {
@@ -39,18 +51,43 @@ class THREEx3 {
     this.guiController.add(object, options);
   }
 
-  addGrid(size, divisions) {
+  addGrid(size, divisions, userOptions) {
+    let options = userOptions || {};
+
+    if (options === true) options = {};
+
+    if (options.size === undefined) options.size = size;
+    if (options.divisions === undefined) options.divisions = divisions;
+
     const gridHelper = new this.dependencies.THREE.GridHelper(
-      size, divisions,
+      options.size, options.divisions,
     );
+
+    if (options.visible !== undefined) {
+      gridHelper.visible = options.visible;
+    }
+
     this.dependencies.scene.add(gridHelper);
 
     this.add(gridHelper);
   }
 
-  addAxes(userSize) {
-    const size = userSize || 5;
-    const axesHelper = new this.dependencies.THREE.AxesHelper(size);
+  addAxes(userSize, userOptions) {
+    let options = userOptions || {};
+
+    if (options === true) options = {};
+
+    if (options.size === undefined) options.size = userSize;
+    if (options.size === undefined) options.size = 5;
+
+    const axesHelper = new this.dependencies.THREE.AxesHelper(
+      options.size,
+    );
+
+    if (options.visible !== undefined) {
+      axesHelper.visible = options.visible;
+    }
+
     this.dependencies.scene.add(axesHelper);
 
     this.add(axesHelper);

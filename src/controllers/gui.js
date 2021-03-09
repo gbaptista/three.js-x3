@@ -1,7 +1,10 @@
 import * as dat from 'dat.gui';
 
-import XYZObserver from '../observers/xyz';
-import ColorObserver from '../observers/color';
+import CameraObserver from '../observers/entities/camera';
+import GenericObserver from '../observers/entities/generic';
+import LightObserver from '../observers/entities/light';
+import LightProbeObserver from '../observers/entities/light_probe';
+import MeshObserver from '../observers/entities/mesh';
 
 class GUIController {
   constructor(THREE, scene) {
@@ -95,123 +98,26 @@ class GUIController {
   }
 
   static addGenericHelper(object, folder) {
-    folder.add(object, 'visible');
-  }
-
-  static observeXYZ(object, properties, folder, options) {
-    properties.forEach((property) => {
-      if (object[property]) {
-        XYZObserver.add(object[property], folder, property, options);
-      }
-    });
+    GenericObserver.add(object, folder);
   }
 
   static addLightProbe(object, folder) {
-    folder.add(object, 'visible');
-
-    ['intensity', 'angle', 'distance'].forEach((property) => {
-      if (object[property]) {
-        let min = 0; let max = 15;
-
-        if (property === 'angle') {
-          min = 0; max = Math.PI * 2;
-        }
-
-        folder.add(object, property, min, max, 0.01);
-      }
-    });
-  }
-
-  addLight(object, folder, userOptions) {
-    const options = userOptions || {};
-
-    folder.add(object, 'visible');
-
-    ['color', 'groundColor'].forEach((property) => {
-      if (object[property]) {
-        ColorObserver.add(
-          object, folder, property, options, this.state,
-        );
-      }
-    });
-
-    ['intensity', 'angle', 'distance'].forEach((property) => {
-      if (object[property]) {
-        let min = 0; let max = 15;
-
-        if (property === 'angle') {
-          min = 0; max = Math.PI * 2;
-        }
-
-        folder.add(object, property, min, max, 0.01);
-      }
-    });
-
-    if (options.helper === undefined) options.helper = true;
-
-    if (options.helper) {
-      let lightHelper;
-
-      switch (object.type) {
-        case 'DirectionalLight':
-          lightHelper = new this.THREE.DirectionalLightHelper(object, 0.1); break;
-        case 'HemisphereLight':
-          lightHelper = new this.THREE.HemisphereLightHelper(object, 0.1); break;
-        case 'HemisphereLightProbe':
-          lightHelper = new this.THREE.HemisphereLightHelper(object, 0.1); break;
-        case 'PointLight':
-          lightHelper = new this.THREE.PointLightHelper(object, 0.1); break;
-        case 'SpotLight':
-          lightHelper = new this.THREE.SpotLightHelper(object, 0.1); break;
-        default:
-          lightHelper = null;
-      }
-
-      if (lightHelper !== null) {
-        /* eslint-disable no-underscore-dangle, no-param-reassign */
-        object.userData.__lightHelper = lightHelper;
-        const subFolder = folder.addFolder(' . helper');
-        subFolder.add(lightHelper, 'visible');
-        if (options.open) subFolder.open();
-        /* eslint-enable no-underscore-dangle, no-param-reassign */
-        this.scene.add(lightHelper);
-      }
-    }
-
-    if (options.xyz === undefined) {
-      options.xyz = ['position'];
-    }
-
-    GUIController.observeXYZ(object, options.xyz, folder, options);
+    LightProbeObserver.add(object, folder);
   }
 
   static addCamera(object, folder, userOptions) {
-    const options = userOptions || {};
+    CameraObserver.add(object, folder, userOptions);
+  }
 
-    if (options.xyz === undefined) {
-      options.xyz = ['position'];
-    }
-
-    GUIController.observeXYZ(object, options.xyz, folder, options);
+  addLight(object, folder, userOptions) {
+    LightObserver.add(
+      object, folder, userOptions,
+      this.state, this.THREE, this.scene,
+    );
   }
 
   addMesh(object, folder, userOptions) {
-    const options = userOptions || {};
-
-    folder.add(object, 'visible');
-
-    if (object.material) {
-      folder.add(object.material, 'wireframe');
-      ColorObserver.add(
-        object.material, folder, 'color', options, this.state,
-      );
-    }
-
-    if (options.xyz === undefined) {
-      options.xyz = ['position', 'rotation', 'scale'];
-    }
-
-    GUIController.observeXYZ(object, options.xyz, folder, options);
+    MeshObserver.add(object, folder, userOptions, this.state);
   }
 }
 
