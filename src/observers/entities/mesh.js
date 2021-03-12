@@ -1,4 +1,4 @@
-import ColorObserver from '../properties/color';
+import MaterialObserver from './material';
 import XYZObserver from '../properties/xyz';
 
 class MeshObserver {
@@ -8,12 +8,7 @@ class MeshObserver {
     folder.add(object, 'visible');
 
     if (object.material) {
-      const subFolder = folder.addFolder(` . material (${object.material.type})`);
-
-      subFolder.add(object.material, 'wireframe');
-      ColorObserver.add(
-        object.material, subFolder, 'color', options, state,
-      );
+      MaterialObserver.add(object.material, folder, options, state);
     }
 
     if (options.xyz === undefined) {

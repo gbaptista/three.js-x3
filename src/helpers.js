@@ -1,5 +1,18 @@
+const PROPERTIES = {
+  aoMapIntensity: { min: 0, max: 1, step: 0.001 },
+  bumpScale: { min: 0, max: 1, step: 0.001 },
+  clearcoat: { min: 0, max: 1, step: 0.001 },
+  clearcoatRoughness: { min: 0, max: 1, step: 0.001 },
+  ior: { min: 1.0, max: 2.333, step: 0.001 },
+  opacity: { min: 0, max: 1, step: 0.001 },
+  reflectivity: { min: 0, max: 1, step: 0.001 },
+  refractionRatio: { min: 0, max: 1, step: 0.001 },
+};
+
 class Helpers {
   static minMaxFor(currentValue, property) {
+    if (PROPERTIES[property]) return PROPERTIES[property];
+
     let distance = Math.round(Math.abs(currentValue));
 
     if (distance === 0) distance = 1;

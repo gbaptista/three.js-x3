@@ -29,6 +29,13 @@ const cube = new THREE.Mesh(
 cube.position.x = 1;
 scene.add(cube);
 
+const cubeB = new THREE.Mesh(
+  new THREE.BoxBufferGeometry(),
+  new THREE.MeshStandardMaterial({ color: 0xffffff }),
+);
+cubeB.position.x = -1;
+scene.add(cubeB);
+
 // const focusLight = new THREE.PointLight(0xfffee3, 10);
 const focusLight = new THREE.SpotLight(0xfffee3, 10, 6, 0.4);
 focusLight.position.set(1, 3, 1);
@@ -59,7 +66,9 @@ const x3 = new THREEx3(
 
 x3.add(focusLight);
 x3.add(light);
-x3.add(cube, { label: 'Cube' });
+// x3.add(cube, { label: 'Cube', open: true });
+x3.add(cube);
+x3.add(cubeB);
 x3.add(camera);
 
 renderer.setAnimationLoop(() => {

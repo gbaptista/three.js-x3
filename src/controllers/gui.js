@@ -10,6 +10,7 @@ class GUIController {
   constructor(THREE, scene) {
     this.controls = new dat.GUI({ name: 'Three.js Debugger' });
     this.state = {};
+    this.ids = {};
     this.scene = scene;
     this.THREE = THREE;
   }
@@ -48,6 +49,16 @@ class GUIController {
       options.label = `${options.label} (${object.type})`;
     }
 
+    if (this.ids[options.label] === undefined) {
+      this.ids[options.label] = 1;
+    } else {
+      this.ids[options.label] += 1;
+    }
+
+    if (this.ids[options.label] > 1) {
+      options.label += ` (${this.ids[options.label]})`;
+    }
+
     const mainFolder = this.controls.addFolder(options.label);
 
     if (options.open) mainFolder.open();
@@ -79,8 +90,9 @@ class GUIController {
       case 'SpotLight': strategy = 'addLight'; break;
 
       default:
+        strategy = 'addMesh';
         /* eslint-disable no-console */
-        console.error(`Missing strategy for ${object.type}.`);
+        // console.warn(`Missing strategy for ${object.type}.`);
         /* eslint-enable no-console */
     }
 

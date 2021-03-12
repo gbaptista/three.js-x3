@@ -4,7 +4,7 @@ class XYZObserver {
   static add(target, folder, property, options) {
     const subFolder = folder.addFolder(` . ${property}`);
 
-    if (options.open) subFolder.open();
+    if (options.open && property === 'position') subFolder.open();
 
     const xRange = Helpers.minMaxFor(target.x);
     const yRange = Helpers.minMaxFor(target.y);
