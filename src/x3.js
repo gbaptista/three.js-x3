@@ -3,7 +3,7 @@ import Stats from 'stats.js';
 import OrbitController from './controllers/orbit';
 import GUIController from './controllers/gui';
 
-const VERSION = '0.0.4';
+const VERSION = '0.0.5';
 
 class THREEx3 {
   constructor(dependencies, userOptions) {
