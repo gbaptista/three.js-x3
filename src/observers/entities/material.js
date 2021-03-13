@@ -28,7 +28,6 @@ class MaterialObserver {
 
     [
       ['metalness'],
-      ['reflectivity'],
       ['roughness'],
       ['shininess'],
       ['transmission'],
@@ -101,6 +100,7 @@ class MaterialObserver {
       ['lightMapIntensity', 'lightMap'],
       ['nearDistance'],
       ['opacity'],
+      ['reflectivity', 'envMap'],
       ['refractionRatio'],
     ].forEach((property) => {
       if (
