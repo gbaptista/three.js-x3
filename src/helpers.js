@@ -24,7 +24,7 @@ class Helpers {
     let min = currentValue - distance;
     let max = currentValue + distance;
 
-    if (property === 'angle') {
+    if (['angle', 'fov'].includes(property)) {
       min = currentValue - Math.PI;
       max = currentValue + Math.PI;
     } else if (property === 'intensity') {
