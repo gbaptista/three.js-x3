@@ -13,8 +13,6 @@ class CameraObserver {
       options.xyz = ['position'];
     }
 
-    XYZObserver.addProperties(object, options.xyz, folder, options);
-
     [
       'fov',
       'zoom',
@@ -35,6 +33,8 @@ class CameraObserver {
         });
       }
     });
+
+    XYZObserver.addProperties(object, options.xyz, folder, options);
 
     const subFolder = folder.addFolder(` advanced (${object.type})`);
 
