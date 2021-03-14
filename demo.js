@@ -24,7 +24,7 @@ document.querySelector(options.targetSelector).appendChild(renderer.domElement);
 
 const cube = new THREE.Mesh(
   new THREE.BoxBufferGeometry(),
-  new THREE.MeshStandardMaterial({ color: 0xffffff }),
+  new THREE.MeshPhysicalMaterial({ color: 0xffffff }),
 );
 cube.position.x = 1;
 scene.add(cube);

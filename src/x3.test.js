@@ -3,7 +3,7 @@ import test from 'ava';
 import THREEx3 from './x3';
 
 test('THREEx3', (t) => {
-  const expectedVersion = '0.0.9';
+  const expectedVersion = '0.0.10';
 
   t.is(THREEx3.VERSION, expectedVersion);
   t.is(THREEx3.version(), expectedVersion);

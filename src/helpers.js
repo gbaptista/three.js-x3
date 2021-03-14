@@ -9,6 +9,8 @@ const PROPERTIES = {
   reflectivity: { min: 0, max: 1, step: 0.001 },
   refractionRatio: { min: 0, max: 1, step: 0.001 },
   roughness: { min: 0, max: 1, step: 0.001 },
+  shininess: { min: 0, max: 10000, step: 1 },
+  transmission: { min: 0, max: 1, step: 0.001 },
 };
 
 class Helpers {

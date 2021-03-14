@@ -10,6 +10,7 @@ class MaterialObserver {
 
     [
       'wireframe',
+      'transparent',
     ].forEach((property) => {
       if (object[property] !== undefined) {
         subFolder.add(object, property);
@@ -19,7 +20,10 @@ class MaterialObserver {
     [
       'color',
     ].forEach((property) => {
-      if (object[property] !== undefined) {
+      if (
+        object[property] !== undefined
+        && object[property] !== null
+      ) {
         ColorObserver.add(
           object, subFolder, property, options, state,
         );
@@ -66,7 +70,6 @@ class MaterialObserver {
       'morphNormals',
       'morphTargets',
       'skinning',
-      'transparent',
     ].forEach((property) => {
       if (object[property] !== undefined) {
         subFolder.add(object, property);
@@ -78,7 +81,10 @@ class MaterialObserver {
       'sheen',
       'specular',
     ].forEach((property) => {
-      if (object[property] !== undefined) {
+      if (
+        object[property] !== undefined
+        && object[property] !== null
+      ) {
         ColorObserver.add(
           object, subFolder, property, options, state,
         );
